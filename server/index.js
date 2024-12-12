@@ -6,14 +6,19 @@
 ; Description: main server file to connect
 ;   to the database and run APIs use the
 ;   'npm run server' command to start
+;   use 'http://localhost:3000/api-docs/'
+;   use ng serve --proxy-config proxy.conf.json
 ;===========================================
 */
+
 // requiring essential middleware
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const mongoose = require("mongoose");
 const swaggerUI = require("swagger-ui-express");
 const swaggerJS = require("swagger-jsdoc");
+const dbURI = process.env.MONGODB_URI;
 
 // requiring the routes for the token
 const tokenAPI = require("./routes/token-routes");
@@ -27,10 +32,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // connect to MongoDB server
-const conn =
-  "mongodb+srv://danialpurselley:seuss41266@token-cluster.3n6neom.mongodb.net/";
 mongoose
-  .connect(conn)
+  .connect(dbURI)
   .then(() => {
     console.log(`Connection to tokenCluster on MongoDB Atlas successful`);
   })
