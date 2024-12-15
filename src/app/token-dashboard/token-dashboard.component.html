@@ -1,18 +1,18 @@
 <mat-card style="width: 100%; height: 100%; overflow: hidden">
   <div class="dashboard-container">
     <div class="metrics">
-      <h3>Token Metrics</h3>
+      <h3 mat-card-title>Token Metrics</h3>
       <mat-card style="margin: 10px; padding: 10px">
-        <p>Available Tokens: {{ availableCount }}</p>
+        <p mat-card-subtitle>Available Tokens: {{ availableCount }}</p>
       </mat-card>
       <mat-card style="margin: 10px; padding: 10px">
-        <p>Unavailable Tokens: {{ unavailableCount }}</p>
+        <p mat-card-subtitle>Unavailable Tokens: {{ unavailableCount }}</p>
       </mat-card>
     </div>
 
-    <div class="chart-container">
-      <h3>Tokens Issued by Date</h3>
+    <mat-card-footer class="chart-container">
+      <h3 mat-card-title>Tokens Issued by Date</h3>
       <canvas id="tokensChart"></canvas>
-    </div>
+    </mat-card-footer>
   </div>
 </mat-card>
