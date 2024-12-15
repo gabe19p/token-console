@@ -8,6 +8,7 @@
 ;   'npm run server' command to start
 ;   use 'http://localhost:3000/api-docs/'
 ;   use ng serve --proxy-config proxy.conf.json
+npm ci && npm run build
 ;===========================================
 */
 
