@@ -27,7 +27,6 @@
     "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "mongoose": "^8.5.2",
-    "ng2-charts": "^7.0.0",
     "rxjs": "~7.5.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
