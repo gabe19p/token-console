@@ -1,5 +1,29 @@
-hello
-
-<h3 *ngFor="let token of tokens">
-  <b>{{ token.tokenId }}</b>
-</h3>
+<div class="body-wrapper">
+  <!-- left side -->
+  <mat-card
+    [ngClass]="{ 'left-expanded': isExpanded, 'left-collapsed': !isExpanded }"
+  >
+    <button mat-icon-button (click)="toggleSidenav()" color="primary">
+      <!-- clicking this button will shrink/expand left side -->
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button *ngIf="isExpanded" mat-button color="primary">
+      <mat-icon>category</mat-icon>
+      <span>Tokens</span>
+    </button>
+    <button *ngIf="!isExpanded" mat-icon-button color="primary">
+      <mat-icon>category</mat-icon>
+    </button>
+    <button *ngIf="isExpanded" mat-button color="primary">
+      <mat-icon>people</mat-icon>
+      <span>Users</span>
+    </button>
+    <button *ngIf="!isExpanded" mat-icon-button color="primary">
+      <mat-icon>people</mat-icon>
+    </button>
+  </mat-card>
+  <!-- right side -->
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>

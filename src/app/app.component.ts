@@ -9,20 +9,10 @@ import { TokenService } from './services/token.service';
 })
 export class AppComponent implements OnInit {
   title = 'token-console';
+  isExpanded = true;
 
-  tokens: any[];
-
-  constructor(private tokenService: TokenService) {
-    this.tokens = [];
-    this.tokenService.findAllTokens().subscribe({
-      next: (res) => {
-        this.tokens = res;
-        console.log(this.tokens);
-      },
-      error: (e) => {
-        console.log(e);
-      },
-    });
+  toggleSidenav() {
+    this.isExpanded = !this.isExpanded;
   }
 
   ngOnInit(): void {}
