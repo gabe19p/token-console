@@ -1,0 +1,41 @@
+<!-- title -->
+<h2 mat-dialog-title style="text-align: center">Token: {{ data.tokenId }}</h2>
+<!-- token deets -->
+<mat-dialog-content class="content">
+  <!--  -->
+  <mat-card class="card">
+    <mat-card-header class="title"> Current User </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="data.currentUser.length > 0; else noCurrentUser">
+        <p>User ID: {{ data.currentUser[0].userId }}</p>
+        <p>User Org: {{ data.currentUser[0].userOrg }}</p>
+        <p>Date Issued: {{ data.currentUser[0].dateIssued }}</p>
+      </div>
+      <ng-template #noCurrentUser>
+        <p>No user assigned.</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+  <!--  -->
+  <!--  -->
+  <mat-card class="card">
+    <mat-card-header class="title"> Previous User </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="data.previousUser.length > 0; else noPreviousUser">
+        <p>User ID: {{ data.previousUser[0].userId }}</p>
+        <p>User Org: {{ data.previousUser[0].userOrg }}</p>
+        <p>Date Issued: {{ data.previousUser[0].dateIssued }}</p>
+      </div>
+      <ng-template #noPreviousUser>
+        <p>No user assigned.</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+  <!--  -->
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="onClose()" color="primary">
+    Close
+  </button>
+</mat-dialog-actions>

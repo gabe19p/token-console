@@ -9,7 +9,20 @@ import { TokenService } from './services/token.service';
 })
 export class AppComponent implements OnInit {
   title = 'token-console';
-  isExpanded = true;
+  isExpanded = false;
+
+  constructor(private tokenService: TokenService) {}
+
+  addNewToken() {
+    this.tokenService.addToken().subscribe(
+      (res) => {
+        console.log('New token added:', res);
+      },
+      (err) => {
+        console.log('Error adding token:', err);
+      }
+    );
+  }
 
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;

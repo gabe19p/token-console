@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+}
+
+.title {
+  position: relative;
+  align-self: center;
+}

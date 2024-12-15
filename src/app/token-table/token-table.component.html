@@ -2,15 +2,25 @@
   <table mat-table [dataSource]="dataSource">
     <!-- Token ID Column -->
     <ng-container matColumnDef="tokenId">
-      <th mat-header-cell *matHeaderCellDef>Token Number</th>
-      <td mat-cell *matCellDef="let element">{{ element.tokenId }}</td>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Token Number
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        {{ element.tokenId }}
+      </td>
     </ng-container>
 
-    <!-- Current User Column -->
+    <!-- User Column -->
     <ng-container matColumnDef="tokenUsers">
-      <th mat-header-cell *matHeaderCellDef>Token User</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="primary">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Token User
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="openDetailsDialog(element)"
+        >
           <mat-icon>person</mat-icon>
           User Details
         </button>
@@ -23,22 +33,49 @@
         Token Status
       </th>
       <td mat-cell *matCellDef="let element" style="text-align: center">
-        <button
-          mat-stroked-button
-          [color]="element.tokenAvailable ? 'primary' : 'accent'"
-        >
-          {{ element.tokenAvailable ? "Available" : "Unavailable" }}
-        </button>
+        <!-- <button mat-stroked-button disabled="">
+        </button> -->
+        {{ element.tokenAvailable ? "Available" : "Unavailable" }}
       </td>
     </ng-container>
 
     <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Action
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        <ng-container *ngIf="element.tokenAvailable; else unavailable">
+          <button
+            mat-raised-button
+            (click)="openAssignDialog(element.tokenId)"
+            color="primary"
+          >
+            Assign
+          </button>
+        </ng-container>
+        <ng-template #unavailable>
+          <button
+            mat-raised-button
+            (click)="openReturnDialog(element.tokenId)"
+            color="accent"
+          >
+            Return
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef=""></th>
       <td mat-cell *matCellDef="let element">
-        <!-- Add buttons or actions here -->
-        <button mat-button>Edit</button>
-        <button mat-button>Delete</button>
+        <button
+          mat-icon-button
+          (click)="openDeleteDialog(element.tokenId)"
+          color="warn"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </ng-container>
 

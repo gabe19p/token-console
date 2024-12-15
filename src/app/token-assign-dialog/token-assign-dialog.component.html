@@ -1,0 +1,16 @@
+<!-- assign-token-dialog.component.html -->
+<h2 mat-dialog-title>Assign Token</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>User ID</mat-label>
+    <input matInput [(ngModel)]="userId" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>User Organization</mat-label>
+    <input matInput [(ngModel)]="userOrg" required />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>
